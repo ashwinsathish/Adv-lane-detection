@@ -15,7 +15,7 @@ In this project, I developed a computer vision system that can detect and track 
 ----
 
 ## 1. Camera Calibration 
-The code includes a function `camera_matrix()` that loads the camera matrix and distortion coefficients from a pickle file. This calibration is necessary to correct the distortion in images captured by the camera.
+The camera is claibrated using a set of chessboard images by using the `cv2.findChessboardCorners()` method. The code includes a function `camera_matrix()` that loads the camera matrix and distortion coefficients from a pickle file. This calibration is necessary to correct the distortion in images captured by the camera.
 
 <img width="938" alt="Screenshot 2023-07-14 at 11 35 42 PM" src="https://github.com/ashwinsathish/Adv-lane-detection/assets/94456641/0dadc0de-a58f-4142-8b3e-ea09ce36bb55">
 
@@ -89,6 +89,8 @@ The code incorporates several salient features that differentiate it from conven
 To evaluate the lane quality, the code calculates various metrics such as lane curvature, vehicle shift from the center, and lane width. These metrics are displayed on the output image to provide meaningful insights into the lane position and alignment. Additionally, the code includes lane departure warning functionality, issuing an alert when the vehicle deviates significantly from the lane. 
 
 The algorithm automatically validates the detected lane lines through 3 major sanity checks. Firstly, the code checks if the detected lane lines have similar curvatures By comparing the curvature of the left and right lines. Secondly, the code verifies the horizontal separation between the detected lines for ensuring even spacing throughout the calculations. Lastly, the code assesses the parallelism of the detected lines ensuring that the detected lines align with the expected parallel orientation of lane markings.
+
+![project_video_output_AdobeExpress](https://github.com/ashwinsathish/Adv-lane-detection/assets/94456641/7fae3287-0227-427d-9587-6f4ec1fdf444)
 
 ## Challenges and scope
 
