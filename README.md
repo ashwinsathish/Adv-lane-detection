@@ -1,4 +1,4 @@
-<img width="938" alt="Screenshot 2023-07-14 at 11 35 02 PM" src="https://github.com/ashwinsathish/Adv-lane-detection/assets/94456641/a627570b-3a49-41f3-95c4-1556d8128e3b"># Advaned lane detection and departure warning
+# Advaned lane detection and departure warning
 
 In this project, I developed a computer vision system that can detect and track lane boundaries on the road using camera images. The goal of this project was to create an accurate and robust lane detection algorithm that can be used in autonomous driving systems.
 
