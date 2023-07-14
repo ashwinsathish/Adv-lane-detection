@@ -45,4 +45,17 @@ The img_warp() function applies the perspective transform to the input image usi
 
 ## 3. Lane detection
 
+### 3.1 Interpol_RanSac Function
+The Interpol_RanSac function performs polynomial interpolation using the RANSAC algorithm.It takes input X and y arrays representing the x and y coordinates of lane pixels, and x_plot representing the x coordinates for plotting the fitted curve. The function uses the `RANSACRegressor` method to robustly fit a polynomial curve to the given data points.
+
+### 3.2 Sliding window search
+This function performs lane detection using a sliding window approach. It takes an input binary image that has undergone perspective transformation and thresholding.It starts by creating a histogram of pixel intensities along the vertical axis of the bottom half of the image and then identifies the starting points for the left and right lanes by locating the peaks in the left and right halves of the histogram.Sliding windows are then used to track the lane pixels vertically from bottom to top.The helps identify and collect the pixel coordinates belonging to the left and right lanes, and fit a second-order polynomial to each set of coordinates.
+
+### 3.3 Lane masking and tracking:
+
+The `lane_mask()` function creates a lane mask overlay on the original undistorted image. This uses the fitted lane curves to generate polygonal curves for the left and right lanes. The purpose of this function is to provide a visual representation of the detected lanes on the original undistorted image.
+
+The lane_tracking function performs lane tracking based on the previously detected lane curves.
+It takes the input binary image that has undergone perspective transformation and thresholding, as well as the previous lane curves `left_fit` and `right_fit`.This function performs a margin-based search around the previous lane curves to identify lane pixels. The identified lane pixels are then used to refit second-order polynomials to the left and right lanes.
+
 
