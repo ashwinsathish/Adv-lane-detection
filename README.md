@@ -77,14 +77,19 @@ The `lane_finding()` function is the main pipeline for lane detection and depart
 
 ----
 
+## Salient features
+The code incorporates several salient features that differentiate it from conventional options.It implements a robust mechanism to handle scenarios where the pipeline fails to detect lane pixels based on the previous frame. In such cases, it switches to a blind search mode, thoroughly scanning the entire binary image to identify non-zero pixels representing the lanes. This adaptive approach ensures comprehensive coverage for accurate lane detection.To achieve smooth and stable lane tracking, the code employs polynomial fitting techniques to estimate the lane lines. The coefficients of the polynomials are averaged over a span of multiple frames, providing temporal stability and reducing fluctuations in lane position estimation. 
+
+To evaluate the lane quality, the code calculates various metrics such as lane curvature, vehicle shift from the center, and lane width. These metrics are displayed on the output image to provide meaningful insights into the lane position and alignment. Additionally, the code includes lane departure warning functionality, issuing an alert when the vehicle deviates significantly from the lane. 
+
+The algorithm automatically validates the detected lane lines through 3 major sanity checks. Firstly, the code checks if the detected lane lines have similar curvatures By comparing the curvature of the left and right lines. Secondly, the code verifies the horizontal separation between the detected lines for ensuring even spacing throughout the calculations. Lastly, the code assesses the parallelism of the detected lines ensuring that the detected lines align with the expected parallel orientation of lane markings.
+
 ## Challenges and scope
 
 ### 1. Object detection functionality
-In developing a system for lane detection and road sign detection, several challenges were encountered that affected the performance and accuracy of the algorithms.
+In developing a system for lane detection and road sign detection, several challenges were encountered that affected the performance and accuracy of the algorithms. One of the primary challenges was the inability to correctly visualize border boxes around road signs, even when the images contained sign boards. This may be due to perspective and viewpoint variations such as when the model may have been trained only on a specific camera perspective (i.e., dashcam position). This could be improved by using a more comprehensive dataset and complex feature extraction techniques to account for variations in sign board designs across places.
 
-- Invisible Border Boxes for Road Signs
-One of the primary challenges was the inability to visualize border boxes around road signs, even when the images contained sign boards. Several technical reasons can contribute to this issue:
+### 2. Highly dynamic frames
+The algorithm suffered from the challenge of dynamically adjusting to different lighting conditions or road curves. There seemes to be a marginally improved performance by limiting frame rate and using slomo-type input videos. This could be improved upon by creating dynamic polygons for each frame or categorizing specific type of lane curves, lighting and road conditions and training them on specific algorithms. 
 
-  - Perspective and Viewpoint: The object detection model used may have been trained on a specific camera perspective, such as the dashcam position. When images with similar sign boards were captured from different perspectives, the model struggled to accurately detect road signs due to variations in perspective and viewpoint.
-  - Training Data Bias: The training data for road sign detection may have been biased towards specific perspectives or viewpoints, such as images captured from the dashcam position. This lack of diversity in training data can hinder the model's ability to generalize to images with different perspectives.
 
