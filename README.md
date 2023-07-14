@@ -95,6 +95,7 @@ In developing a system for lane detection and road sign detection, several chall
 ### 2. Highly dynamic frames
 The algorithm suffered from the challenge of dynamically adjusting to different lighting conditions or road curves. There seemes to be a marginally improved performance by limiting frame rate and using slomo-type input videos. This could be improved upon by creating dynamic polygons for each frame or categorizing specific type of lane curves, lighting and road conditions and training them on specific algorithms.
 
+![hard_challenge_video_output_AdobeExpress](https://github.com/ashwinsathish/Adv-lane-detection/assets/94456641/00302273-7035-474c-8add-5e3ee80ec5f7)
 
 
 
