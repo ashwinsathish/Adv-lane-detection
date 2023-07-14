@@ -58,4 +58,33 @@ The `lane_mask()` function creates a lane mask overlay on the original undistort
 The lane_tracking function performs lane tracking based on the previously detected lane curves.
 It takes the input binary image that has undergone perspective transformation and thresholding, as well as the previous lane curves `left_fit` and `right_fit`.This function performs a margin-based search around the previous lane curves to identify lane pixels. The identified lane pixels are then used to refit second-order polynomials to the left and right lanes.
 
+## 4. Lane parameters
+
+The `meas_curvature()` function calculates the curvature of the lane lines and the offset of the vehicle from the center of the lane. The radii of curvature for both lane lines are then computed using the fitted polynomial coefficients and the y-coordinate of the bottom of the image.The offset of the vehicle from the center of the lane is determined by calculating the difference between the midpoint of the lane lines and the midpoint of the image, converted to meters.The `lane_chars function()` then calculates the mean and variance of the lane width. 
+
+## 5. Lane finding and departure warning
+
+The `lane_finding()` function is the main pipeline for lane detection and departure warning. It takes an undistorted image as input and performs the following steps:
+- Applies thresholding to obtain a binary image with lane pixels.
+- Warps the binary image to a bird's-eye view using perspective transform.
+- If the previous lane detection was successful for both left and right lanes, it uses the lane_tracking function to track the lanes in the current frame based on the previous fits.
+- Otherwise, it uses the sliding_windows_search function to perform a sliding window search and detect the lanes.
+- Updates the current fits, best fits, and recent fits for both left and right lanes.
+- Checks the lane width, lane continuity, and lane width variance to validate the detected lanes. If the lane parameters do not meet the specified criteria, the lane detection is considered unsuccessful.
+- If the lane detection is successful, the function recalculates the curvature and lane width using the best fits.
+- Warps the detected lane boundaries back onto the original image, adds text annotations for curvature, vehicle offset, and lane width, and displays a lane departure warning if the vehicle is outside the acceptable lane deviation threshold.
+- Finally, returns the annotated output image.
+
+----
+
+## Challenges and scope
+
+### 1. Object detection functionality
+In developing a system for lane detection and road sign detection, several challenges were encountered that affected the performance and accuracy of the algorithms.
+
+- Invisible Border Boxes for Road Signs
+One of the primary challenges was the inability to visualize border boxes around road signs, even when the images contained sign boards. Several technical reasons can contribute to this issue:
+
+  - Perspective and Viewpoint: The object detection model used may have been trained on a specific camera perspective, such as the dashcam position. When images with similar sign boards were captured from different perspectives, the model struggled to accurately detect road signs due to variations in perspective and viewpoint.
+  - Training Data Bias: The training data for road sign detection may have been biased towards specific perspectives or viewpoints, such as images captured from the dashcam position. This lack of diversity in training data can hinder the model's ability to generalize to images with different perspectives.
 
