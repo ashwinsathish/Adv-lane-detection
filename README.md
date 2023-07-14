@@ -17,7 +17,7 @@ In this project, I developed a computer vision system that can detect and track 
 ## 1. Camera Calibration 
 The code includes a function `camera_matrix()` that loads the camera matrix and distortion coefficients from a pickle file. This calibration is necessary to correct the distortion in images captured by the camera.
 
-
+<img width="938" alt="Screenshot 2023-07-14 at 11 35 42 PM" src="https://github.com/ashwinsathish/Adv-lane-detection/assets/94456641/0dadc0de-a58f-4142-8b3e-ea09ce36bb55">
 
 ## 2. Image preprocessing
 Several image preprocessing functions are defined to prepare the input image for lane detection. These functions include:
@@ -44,6 +44,8 @@ Perspective Transformation Setup: The `perspective_transformer()` function sets 
 
 ### 2.3. Image Warping
 The img_warp() function applies the perspective transform to the input image using the specified source and destination points. This results in a warped image where the lane markings appear as straight lines.
+
+<img width="730" alt="Screenshot 2023-07-14 at 11 36 14 PM" src="https://github.com/ashwinsathish/Adv-lane-detection/assets/94456641/830efed3-66ee-4062-8008-c5b850cb113f">
 
 ## 3. Lane detection
 
@@ -75,7 +77,9 @@ The `lane_finding()` function is the main pipeline for lane detection and depart
 - Checks the lane width, lane continuity, and lane width variance to validate the detected lanes. If the lane parameters do not meet the specified criteria, the lane detection is considered unsuccessful.
 - If the lane detection is successful, the function recalculates the curvature and lane width using the best fits.
 - Warps the detected lane boundaries back onto the original image, adds text annotations for curvature, vehicle offset, and lane width, and displays a lane departure warning if the vehicle is outside the acceptable lane deviation threshold.
-- Finally, returns the annotated output image.
+- Finally, returns the annotated output image/video.
+
+<img width="704" alt="Screenshot 2023-07-14 at 11 36 36 PM" src="https://github.com/ashwinsathish/Adv-lane-detection/assets/94456641/2364f2ba-78c7-4603-8b62-b92680d7cfe6">
 
 ----
 
@@ -92,6 +96,8 @@ The algorithm automatically validates the detected lane lines through 3 major sa
 In developing a system for lane detection and road sign detection, several challenges were encountered that affected the performance and accuracy of the algorithms. One of the primary challenges was the inability to correctly visualize border boxes around road signs, even when the images contained sign boards. This may be due to perspective and viewpoint variations such as when the model may have been trained only on a specific camera perspective (i.e., dashcam position). This could be improved by using a more comprehensive dataset and complex feature extraction techniques to account for variations in sign board designs across places.
 
 ### 2. Highly dynamic frames
-The algorithm suffered from the challenge of dynamically adjusting to different lighting conditions or road curves. There seemes to be a marginally improved performance by limiting frame rate and using slomo-type input videos. This could be improved upon by creating dynamic polygons for each frame or categorizing specific type of lane curves, lighting and road conditions and training them on specific algorithms. 
+The algorithm suffered from the challenge of dynamically adjusting to different lighting conditions or road curves. There seemes to be a marginally improved performance by limiting frame rate and using slomo-type input videos. This could be improved upon by creating dynamic polygons for each frame or categorizing specific type of lane curves, lighting and road conditions and training them on specific algorithms.
+
+
 
 
