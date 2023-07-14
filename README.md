@@ -1,4 +1,4 @@
-# Adv-lane-detection
+# Advaned lane detection and departure warning
 
 In this project, I developed a computer vision system that can detect and track lane boundaries on the road using camera images. The goal of this project was to create an accurate and robust lane detection algorithm that can be used in autonomous driving systems.
 
