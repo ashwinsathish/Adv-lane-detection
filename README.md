@@ -83,12 +83,7 @@ The `lane_finding()` function is the main pipeline for lane detection and depart
 
 ----
 
-## Salient features
-The code incorporates several salient features that differentiate it from conventional options.It implements a robust mechanism to handle scenarios where the pipeline fails to detect lane pixels based on the previous frame. In such cases, it switches to a blind search mode, thoroughly scanning the entire binary image to identify non-zero pixels representing the lanes. This adaptive approach ensures comprehensive coverage for accurate lane detection.To achieve smooth and stable lane tracking, the code employs polynomial fitting techniques to estimate the lane lines. The coefficients of the polynomials are averaged over a span of multiple frames, providing temporal stability and reducing fluctuations in lane position estimation. 
-
-To evaluate the lane quality, the code calculates various metrics such as lane curvature, vehicle shift from the center, and lane width. These metrics are displayed on the output image to provide meaningful insights into the lane position and alignment. Additionally, the code includes lane departure warning functionality, issuing an alert when the vehicle deviates significantly from the lane. 
-
-The algorithm automatically validates the detected lane lines through 3 major sanity checks. Firstly, the code checks if the detected lane lines have similar curvatures By comparing the curvature of the left and right lines. Secondly, the code verifies the horizontal separation between the detected lines for ensuring even spacing throughout the calculations. Lastly, the code assesses the parallelism of the detected lines ensuring that the detected lines align with the expected parallel orientation of lane markings.
+## Project video demonstration
 
 ![project_video_output_AdobeExpress](https://github.com/ashwinsathish/Adv-lane-detection/assets/94456641/7fae3287-0227-427d-9587-6f4ec1fdf444)
 
